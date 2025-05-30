@@ -7,9 +7,8 @@ class LocationClient(ApiClient):
         return LOCATION_ENDPOINT
     
     def parse_response(self, result):
-        
         return {
-            "id": result.get("id"),
+            "id": result["id"], # required
             "name": result.get("name"),
             "type": result.get("type"),
             "dimension": result.get("dimension")

@@ -17,7 +17,7 @@ def main():
     #     print(l)
 
     print(f"Character 1: {character_client.get_by_id(1)}")
-    print(f"Location 1: {location_client.get_by_id(1)}")
+    print(f"Location 1: {location_client.get_by_id(256)}")
 
 if __name__ == "__main__":
     main()

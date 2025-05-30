@@ -31,7 +31,14 @@ class ApiClient:
             except requests.RequestException as e:
                 print(f"Error fetching {url}: {e}")
                 
-        return [self.parse_response(item) for item in results]
+        # Try to parse each result, otherwise, skip it
+        parsed = []
+        for item in results:
+            try:
+                parsed.append(self.parse_response(item))
+            except (KeyError, ValueError) as e:
+                print(f"Skipping record due to parse error ({e!r}): {item}")
+        return parsed
     
     # Get an entity by ID
     def get_by_id(self, id): 
@@ -41,7 +48,11 @@ class ApiClient:
             response.raise_for_status()
             data = response.json()
 
-            return self.parse_response(data)
+            # Try to parse result
+            try:
+                return self.parse_response(data)
+            except (KeyError, ValueError) as e:
+                print(f"Failed to parse {self.get_endpoint()} id={id}: {e!r}")
 
         except requests.exceptions.HTTPError as http_err:
             # Handle not found error

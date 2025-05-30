@@ -4,6 +4,7 @@
 
 Required packages: 
 - requests: `pip install requests`
+- pytest: `pip install pytest` (for testing only)
 
 ## Extendability
 
