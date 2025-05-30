@@ -26,7 +26,7 @@ class ApiClient:
 
             url = response.get("info", {}).get("next") # get next page of results
             
-        return [self._safe_parse(item) for item in results]
+        return [parsed for item in results if (parsed := self._safe_parse(item)) is not None]
 
     
     # Get an entity by ID
@@ -59,6 +59,7 @@ class ApiClient:
     def _safe_parse(self, item):
         try:
             return self.parse_response(item)
-        except (KeyError, ValueError) as e:
-            print(f"Failed to parse item {e!r}: {item}")
+        except KeyError as e:
+            field = e.args[0]
+            print(f"Missing required field {field} in response: {item}")
             return None

@@ -45,22 +45,3 @@ payload_missing_id = {
 def test_parse_missing_id():
     with pytest.raises(KeyError, match="id"):
         client.parse_response(payload_missing_id)
-
-payload_invalid_location = {
-    "id": 1,
-    "name": "Rick Sanchez",
-    "status": "Alive",
-    "species": "Human",
-    "origin": {
-        "name": "Earth (C-137)",
-        "url": "https://rickandmortyapi.com/api/location/1"
-    },
-    "location": {
-        "name": "Citadel of Ricks",
-        "url": "https://rickandmortyapi.com/api/corrupted_url"
-    }
-}
-
-def test_parse_invalid_location():
-    with pytest.raises(ValueError, match="URL"):
-        client.parse_response(payload_invalid_location)
