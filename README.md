@@ -12,9 +12,6 @@ Required packages:
 For the intended client (e.g. LocationClient), simply add fields to the **parse_response** method. Note that the fields must be extracted from the response body.
 ```
     def parse_response(self, result):
-        
-        # Add logic to extract more complex fields, if required
-
         return {
             "id": result.get("id"),
             "name": result.get("name"),

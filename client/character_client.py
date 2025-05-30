@@ -8,22 +8,22 @@ class CharacterClient(ApiClient):
     def get_endpoint(self):
         return CHARACTER_ENDPOINT
     
-    def parse_response(self, result):
+    def parse_response(self, resp):
+        return {
+            "id": resp["id"], # required
+            "name": resp.get("name"),
+            "status": resp.get("status"),
+            "species": resp.get("species"),
+            "origin.name": resp.get("origin", {}).get("name"),
+            "location.id": self._extract_location_id(resp)
+        }
 
-        # Get location ID from $.location.url
-        location_url = result["location"]["url"]
+    # Helper to get location ID from $.location.url
+    def _extract_location_id(self, resp):
+        location_url = resp["location"]["url"]
         location_id = None
         match = re.search(r"/location/(\d+)", location_url)
         if match:
-            location_id = int(match.group(1))
+            return int(match.group(1))
         else: 
             raise ValueError(f"Could not extract ID location URL: {location_url}")
-
-        return {
-            "id": result["id"], # required
-            "name": result.get("name"),
-            "status": result.get("status"),
-            "species": result.get("species"),
-            "origin.name": result.get("origin", {}).get("name"),
-            "location.id": location_id
-        }

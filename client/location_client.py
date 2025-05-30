@@ -6,10 +6,10 @@ class LocationClient(ApiClient):
     def get_endpoint(self):
         return LOCATION_ENDPOINT
     
-    def parse_response(self, result):
+    def parse_response(self, resp):
         return {
-            "id": result["id"], # required
-            "name": result.get("name"),
-            "type": result.get("type"),
-            "dimension": result.get("dimension")
+            "id": resp["id"], # required
+            "name": resp.get("name"),
+            "type": resp.get("type"),
+            "dimension": resp.get("dimension")
         }

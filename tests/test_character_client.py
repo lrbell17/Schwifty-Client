@@ -47,6 +47,7 @@ def test_parse_missing_id():
         client.parse_response(payload_missing_id)
 
 payload_invalid_location = {
+    "id": 1,
     "name": "Rick Sanchez",
     "status": "Alive",
     "species": "Human",
