@@ -1,7 +1,7 @@
 import csv
 import os
 
-class CsvReadWriter:
+class CsvUtil:
 
     def __init__(self, file_path):
         self.file_path = file_path
@@ -56,4 +56,3 @@ class CsvReadWriter:
         invalid_keys = [key for key in filters if key not in headers]
         if invalid_keys:
                 raise ValueError(f"Invalid filter keys: {invalid_keys}. Valid headers are: {headers}")
-

@@ -6,17 +6,21 @@ Required packages:
 - requests: `pip install requests`
 - pytest: `pip install pytest` (for testing only)
 
+Run the demo: `python -m main`
+
+Run unit tests: `pytest -q`
+
 ## Extendability
 
 ### Adding fields
 For the intended client (e.g. LocationClient), simply add fields to the **parse_response** method. Note that the fields must be extracted from the response body.
 ```
-    def parse_response(self, result):
+    def parse_response(self, resp):
         return {
-            "id": result.get("id"),
-            "name": result.get("name"),
-            "type": result.get("type"),
-            "dimension": result.get("dimension"),
+            "id": resp.get("id"),
+            "name": resp.get("name"),
+            "type": resp.get("type"),
+            "dimension": resp.get("dimension"),
             # Additional fields here
         }
 
