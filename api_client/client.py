@@ -2,6 +2,7 @@ import requests
 
 BASE_URL = "https://rickandmortyapi.com/api"
 
+# Provides generallized methods for fetching data from API and handling paginations
 class RickAndMortyClient:
 
     # Get the name of the endpoint to be used in the URL - to be implemented in child class
