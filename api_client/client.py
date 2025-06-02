@@ -2,13 +2,13 @@ import requests
 
 BASE_URL = "https://rickandmortyapi.com/api"
 
-class ApiClient:
+class RickAndMortyClient:
 
-    # Get the name of the endpoint to be used in the URL
+    # Get the name of the endpoint to be used in the URL - to be implemented in child class
     def get_endpoint(self):
         raise NotImplementedError
     
-    # Parse response to extract selected fields 
+    # Parse response to extract selected fields - to be implemented in child class
     def parse_response(self):
         raise NotImplementedError
     

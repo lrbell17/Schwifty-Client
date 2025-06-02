@@ -6,7 +6,15 @@ Required packages:
 - requests: `pip install requests`
 - pytest: `pip install pytest` (for testing only)
 
-Run the demo: `python -m main`
+Run the CLI tool with the `init` command to load data from Rick and Morty API to CSV files: 
+```
+python cli.py init
+```
+Then, use the `characters` command to search for characters by id and/or name:
+```
+python cli.py characters --id 1 --name "Rick Sanchez"
+```
+
 
 Run unit tests: `pytest -q`
 
@@ -29,7 +37,7 @@ For the intended client (e.g. LocationClient), simply add fields to the **parse_
 ### Extending to other endpoints
 Create new API client and implement the methods **get_endpoint** and **parse_response**.
 ```
-class EpisodeClient(ApiClient):
+class EpisodeClient(RickAndMortyClient):
 
     # Return the name of the endpoint (e.g. "episode") to be used in the URL
     def get_endpoint(self):

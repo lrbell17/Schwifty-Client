@@ -1,4 +1,4 @@
-from client.character_client import CharacterClient
+from api_client.character_client import CharacterClient
 import pytest
 
 client = CharacterClient()

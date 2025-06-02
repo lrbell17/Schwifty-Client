@@ -1,9 +1,9 @@
-from .api_client import ApiClient
+from .client import RickAndMortyClient
 import re
 
 CHARACTER_ENDPOINT = "character"
 
-class CharacterClient(ApiClient):
+class CharacterClient(RickAndMortyClient):
 
     def get_endpoint(self):
         return CHARACTER_ENDPOINT

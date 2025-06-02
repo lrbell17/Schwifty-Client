@@ -1,9 +1,9 @@
-
+# Provides logic to enrich CSV data with another CSV by matching columns
 class Enricher:
 
     """
     src_col: column in the source record (e.g. 'location.id')
-    dest_col: column in the destination record (e.g. 'id')
+    dest_col: column in the destination record (e.g. 'id') - this is assumed to be unique
     dest_csv_util: instance of CsvUtil for destination data
     nested_key: name of the nested field in the enriched record (e.g. 'location')
     """

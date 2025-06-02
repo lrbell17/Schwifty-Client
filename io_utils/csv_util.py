@@ -1,6 +1,7 @@
 import csv
 import os
 
+# Generic CSV utility to write and query data
 class CsvUtil:
 
     def __init__(self, file_path):
@@ -56,3 +57,15 @@ class CsvUtil:
         invalid_keys = [key for key in filters if key not in headers]
         if invalid_keys:
                 raise ValueError(f"Invalid filter keys: {invalid_keys}. Valid headers are: {headers}")
+
+# CSV utility with enrichment capabilities
+class EnrichedCsvUtil(CsvUtil):
+
+    def __init__(self, src_file_path, enricher):
+        super().__init__(src_file_path)
+        self.enricher = enricher
+
+    # Call read_with_filters from super class, then add data from enrichment
+    def read_with_filters(self, filters): 
+        results = super().read_with_filters(filters)
+        return self.enricher.enrich(results)

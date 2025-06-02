@@ -1,8 +1,8 @@
-from .api_client import ApiClient
+from .client import RickAndMortyClient
 
 LOCATION_ENDPOINT = "location"
 
-class LocationClient(ApiClient):
+class LocationClient(RickAndMortyClient):
     def get_endpoint(self):
         return LOCATION_ENDPOINT
     

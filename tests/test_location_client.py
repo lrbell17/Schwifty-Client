@@ -1,4 +1,4 @@
-from client.location_client import LocationClient
+from api_client.location_client import LocationClient
 import pytest
 
 client = LocationClient()
