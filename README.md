@@ -62,7 +62,7 @@ all_episodes = episode_client.fetch_all()
 The **read_with_filters** method of CsvUtil accepts a dictionary of filters and returns a list containing all the matched records.
 ```
 character_csv = CsvUtil(CHARACTER_FILE_PATH)
-humans = character_csv.read_with_filters("species": "Human", "status": "Alive")
+humans = character_csv.read_with_filters({"species": "Human", "status": "Alive"})
 ```
 
 ### Enriching CSV results
@@ -86,7 +86,7 @@ enriched_character_csv = EnrichedCsvUtil(
 ```
 Now, calling the **read_with_filters** method on the CSV utility will return the character automatically enriched with the origin data.
 ```
-enriched_character_csv.read_with_filters("id": 1)
+enriched_character_csv.read_with_filters({"id": 1})
 ```
 Result:
 ```
